@@ -135,6 +135,17 @@ WEB_PORT=3000
 
 3. **Restart Cursor** for changes to take effect
 
+### Cursor AI Notification Rule
+
+**Purpose**: Ensure the user is promptly notified whenever user intervention is required.
+
+**Triggers**:
+- Completion of the process with a success message
+- Any unexpected halts or issues in the process
+- When Cursor AI requires user input or has questions
+
+**Action**: Utilize `send_telegram_message` tool to send a detailed Telegram message to the user.
+
 ### Connecting to Claude Desktop
 
 Add to your `claude_desktop_config.json`:
