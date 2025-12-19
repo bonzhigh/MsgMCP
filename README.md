@@ -1,5 +1,7 @@
 # Telegram MCP Server
 
+> **⚠️ Disclaimer**: This project contains AI-generated code that has not been thoroughly tested. Use at your own risk and verify all functionality before production deployment.
+
 A Model Context Protocol (MCP) server that enables AI assistants to send messages to Telegram users. Features a web-based configuration interface and supports both chat IDs and usernames.
 
 ## Features
