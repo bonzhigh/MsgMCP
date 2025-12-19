@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram MCP Server - Configuration & Testing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Telegram MCP Server</h1>
+            <p>Configure and test your Telegram bot integration</p>
+        </header>
+
+        <div class="status-bar" id="statusBar">
+            <div class="status-item">
+                <span class="status-label">Server:</span>
+                <span class="status-value" id="serverStatus">Checking...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Bot:</span>
+                <span class="status-value" id="botStatus">Checking...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Token:</span>
+                <span class="status-value" id="tokenStatus">Checking...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Default User:</span>
+                <span class="status-value" id="defaultUserStatus">Checking...</span>
+            </div>
+        </div>
+
+        <section class="config-section">
+            <h2>Configuration</h2>
+            <div class="alert alert-info" style="padding: 15px; background: #d1ecf1; border-left: 4px solid #0c5460; margin-bottom: 20px; border-radius: 4px;">
+                <strong>💡 Tip:</strong> After saving your bot token, check the server console (terminal) for messages like "✅ Polling started successfully" to confirm the bot is ready to receive commands.
+            </div>
+            <form id="configForm">
+                <div class="form-group">
+                    <label for="botToken">Telegram Bot Token:</label>
+                    <input type="password" id="botToken" placeholder="Enter your bot token from BotFather">
+                    <small>Get your bot token from <a href="https://t.me/BotFather" target="_blank">@BotFather</a></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="defaultUser">Default User (Chat ID or Username):</label>
+                    <input type="text" id="defaultUser" placeholder="e.g., 123456789 or @username">
+                    <small>If no recipient is specified in messages, send to this user</small>
+                    <div class="chat-id-help">
+                        <button type="button" class="btn-help" onclick="toggleChatIdHelp()">How to get Chat ID?</button>
+                        <div id="chatIdHelp" class="help-content" style="display: none;">
+                            <h4>Methods to get Chat ID:</h4>
+                            <ol>
+                                <li><strong>Using /get_chat_id command:</strong>
+                                    <ul>
+                                        <li>Start a chat with your bot on Telegram</li>
+                                        <li>Send the command: <code>/get_chat_id</code></li>
+                                        <li>The bot will reply with your Chat ID</li>
+                                    </ul>
+                                </li>
+                                <li><strong>From bot logs:</strong>
+                                    <ul>
+                                        <li>When someone messages your bot, check the server console/logs</li>
+                                        <li>Look for lines like: <code>[BOT LOG] Message from Chat ID: 123456789</code></li>
+                                        <li>The Chat ID is the numeric value shown</li>
+                                    </ul>
+                                </li>
+                                <li><strong>Using other bots:</strong>
+                                    <ul>
+                                        <li>Use bots like <a href="https://t.me/userinfobot" target="_blank">@userinfobot</a> or <a href="https://t.me/getidsbot" target="_blank">@getidsbot</a></li>
+                                        <li>They will show your Chat ID when you message them</li>
+                                    </ul>
+                                </li>
+                            </ol>
+                            <p><strong>Note:</strong> Chat IDs are numeric (e.g., 123456789). Usernames start with @ and only work if the user has already messaged your bot.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save Configuration</button>
+                <div id="configMessage" class="message"></div>
+            </form>
+        </section>
+
+        <section class="test-section">
+            <h2>Test Message Sending</h2>
+            <form id="testForm">
+                <div class="form-group">
+                    <label for="testMessage">Message:</label>
+                    <textarea id="testMessage" placeholder="Enter your test message here..." rows="3"></textarea>
+                </div>
+
+                <p class="help-text">Messages will be sent to the default user configured in your .env file.</p>
+
+                <button type="submit" class="btn btn-success">Send Test Message</button>
+                <div id="testMessage" class="message"></div>
+            </form>
+        </section>
+
+        <section class="info-section">
+            <h2>How to Use</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>1. Create Bot</h3>
+                    <p>Start a chat with <a href="https://t.me/BotFather" target="_blank">@BotFather</a> and use <code>/newbot</code> to create your bot.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>2. Configure</h3>
+                    <p>Enter your bot token above and set a default user for messages.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>3. Test</h3>
+                    <p>Use the test form to verify your bot can send messages.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>4. Integrate</h3>
+                    <p>Use this server with MCP-compatible AI assistants to send Telegram messages.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
